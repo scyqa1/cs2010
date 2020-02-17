@@ -116,7 +116,7 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-		 //todo: implement the sort
+		 
 	
     }//end mergesortIterative
     
@@ -129,12 +129,40 @@
      * @param a: An unsorted array of doubles.
      * @return after the method returns, the array must be in ascending sorted order.
      */
-    static double[] mergeSortRecursive (double a[]) {
-    	
+    private static void mergeSortRecursive(double []a,int left,int mid,int right){
+        double []temp=new double[a.length];
+        int p1=left,p2=mid+1,k=left;
 
-    	//todo: implement the sort
+        while(p1<=mid && p2<=right){
+            if(a[p1]<=a[p2])
+                temp[k++]=a[p1++];
+            else
+                temp[k++]=a[p2++];
+        }
+
+        while(p1<=mid) temp[k++]=a[p1++];
+        while(p2<=right) temp[k++]=a[p2++];
+
+
+        for (int i = left; i <=right; i++)
+            a[i]=temp[i];
+    }
+
+    private static void mergeSortRecursive(double [] a,int start,int end){
+        if(start<end){
+            int mid=(start+end)/2;
+            mergeSortRecursive(a, start, mid);
+            mergeSortRecursive(a, mid+1, end);
+            mergeSortRecursive(a, start, mid, end);
+        }
+    }
+    
+    static double[] mergeSortRecursive (double a[]) {
+
+    	mergeSortRecursive(a, 0, a.length-1);
+        return a;
 	
-   }//end mergeSortRecursive
+    }//end mergeSortRecursive
     	
     
 
