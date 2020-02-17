@@ -113,23 +113,8 @@
      * @param a: An unsorted array of doubles.
      * @return after the method returns, the array must be in ascending sorted order.
      */
-
-    static double[] mergeSortIterative (double a[]) {
-
-		 
-	
-    }//end mergesortIterative
     
-    
-    
-    /**
-     * Sorts an array of doubles using recursive implementation of Merge Sort.
-     * This method is static, thus it can be called as SortComparison.sort(a)
-     *
-     * @param a: An unsorted array of doubles.
-     * @return after the method returns, the array must be in ascending sorted order.
-     */
-    private static void mergeSortRecursive(double []a,int left,int mid,int right){
+    private static void merge(double []a,int left,int mid,int right){
         double []temp=new double[a.length];
         int p1=left,p2=mid+1,k=left;
 
@@ -148,12 +133,31 @@
             a[i]=temp[i];
     }
 
+    static double[] mergeSortIterative (double a[]) {
+        for(int sz=1; sz<a.length; sz=sz+sz)
+        	for(int lo=0; lo<a.length-sz; lo+=sz+sz)
+        		merge(a,lo,lo+sz-1,Math.min(lo+sz+sz-1,a.length-1));
+		return a; 
+	
+    }//end mergesortIterative
+    
+    
+    
+    /**
+     * Sorts an array of doubles using recursive implementation of Merge Sort.
+     * This method is static, thus it can be called as SortComparison.sort(a)
+     *
+     * @param a: An unsorted array of doubles.
+     * @return after the method returns, the array must be in ascending sorted order.
+     */
+ 
+
     private static void mergeSortRecursive(double [] a,int start,int end){
         if(start<end){
             int mid=(start+end)/2;
             mergeSortRecursive(a, start, mid);
             mergeSortRecursive(a, mid+1, end);
-            mergeSortRecursive(a, start, mid, end);
+            merge(a, start, mid, end);
         }
     }
     
