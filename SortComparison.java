@@ -61,9 +61,43 @@
      * @return array sorted in ascending order
      *
      */
+    
+    public static void quickSort(double[] a, int low, int high) {
+
+        if (low >= high) {
+            return;
+        }
+
+        int i = low, j = high;
+        double base = a[low];
+        while (i < j) {
+
+            while (a[j] >= base && i < j) {
+                j--;
+            }
+
+            while (a[i] <= base && i < j) {
+                i++;
+            }
+            swap(a,i,j); 
+        }
+        swap(a,low,j); 
+        
+        quickSort(a,low,j-1);  
+        quickSort(a,j+1,high);
+
+    }
+
+    private static void swap(double[] a, int i, int j) {
+        double tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+
     static double [] quickSort (double a[]){
-	
-		 //todo: implement the sort
+    	
+    	quickSort(a,0,a.length-1);
+    	return a;
 
     }//end quicksort
 
