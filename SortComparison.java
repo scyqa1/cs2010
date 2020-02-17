@@ -17,14 +17,19 @@
      * @return array sorted in ascending order.
      *
      */
+	 
+	private static void swap(double[] a, int i, int j) {
+	    double tmp = a[i];
+	    a[i] = a[j];
+	    a[j] = tmp;
+    }
+	 
     static double [] insertionSort (double a[]){
 
         double temp;
         for(int i=1; i<a.length; i++) {
         	for(int j=1; j>0; j--) {
-        		temp=a[j];
-        		a[j]=a[j-1];
-        		a[j-1]=temp;
+        		swap(a,j,j-1);
         	}
         }
         return a;
@@ -46,9 +51,7 @@
         		 if(a[j]<a[min_idx])
         			 min_idx=j;
         	 }
-        	 double temp=a[min_idx];
-        	 a[min_idx]=a[i];
-        	 a[i]=temp;
+        	 swap(a,i,min_idx);
          }
          return a;
 
@@ -88,11 +91,6 @@
 
     }
 
-    private static void swap(double[] a, int i, int j) {
-        double tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
 
     static double [] quickSort (double a[]){
     	
