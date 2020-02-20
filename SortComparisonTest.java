@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +30,25 @@ public class SortComparisonTest
     @Test
     public void testEmpty()
     {
+    	double[] a= new double[0];
+    	assertArrayEquals(a,SortComparison.insertionSort(a),0);
+    	assertArrayEquals(a,SortComparison.selectionSort(a),0);
+    	assertArrayEquals(a,SortComparison.quickSort(a),0);
+    	assertArrayEquals(a,SortComparison.mergeSortIterative(a),0);
+    	assertArrayEquals(a,SortComparison.mergeSortRecursive(a),0);
+    }
+    
+
+    @Test
+    public void testGeneral() {
+        double[] a = { 8, 2, 3, 11, 5, 6, 12, 4, 9, 7, 10, 1 };
+        double[] aSorted = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+
+        assertArrayEquals(aSorted, SortComparison.insertionSort(a), 0);
+        assertArrayEquals(aSorted, SortComparison.selectionSort(a), 0);
+        assertArrayEquals(aSorted, SortComparison.quickSort(a), 0);
+        assertArrayEquals(aSorted, SortComparison.mergeSortIterative(a), 0);
+        assertArrayEquals(aSorted, SortComparison.mergeSortRecursive(a), 0);
     }
 
 
