@@ -47,12 +47,41 @@ public class SortComparisonTest
     public void testGeneral() {
         double[] a = { 8, 2, 3, 11, 5, 6, 12, 4, 9, 7, 10, 1 };
         double[] aSorted = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-
+        
         assertArrayEquals(aSorted, SortComparison.insertionSort(a), 0);
         assertArrayEquals(aSorted, SortComparison.selectionSort(a), 0);
         assertArrayEquals(aSorted, SortComparison.quickSort(a), 0);
         assertArrayEquals(aSorted, SortComparison.mergeSortIterative(a), 0);
         assertArrayEquals(aSorted, SortComparison.mergeSortRecursive(a), 0);
+        
+        
+        double[] b = { 1 };
+        double[] bSorted = { 1 };
+        
+        assertArrayEquals(bSorted, SortComparison.insertionSort(b), 0);
+        assertArrayEquals(bSorted, SortComparison.selectionSort(b), 0);
+        assertArrayEquals(bSorted, SortComparison.quickSort(b), 0);
+        assertArrayEquals(bSorted, SortComparison.mergeSortIterative(b), 0);
+        assertArrayEquals(bSorted, SortComparison.mergeSortRecursive(b), 0);
+        
+        
+        double[] c = { 1, 2, 3, 4, 5 };
+        double[] cSorted = { 1, 2, 3, 4, 5 };
+        
+        assertArrayEquals(cSorted, SortComparison.insertionSort(c), 0);
+        assertArrayEquals(cSorted, SortComparison.selectionSort(c), 0);
+        assertArrayEquals(cSorted, SortComparison.quickSort(c), 0);
+        assertArrayEquals(cSorted, SortComparison.mergeSortIterative(c), 0);
+        assertArrayEquals(cSorted, SortComparison.mergeSortRecursive(c), 0);
+        
+        double[] d = { 2, 1 };
+        double[] dSorted = { 1, 2 };
+        
+        assertArrayEquals(dSorted, SortComparison.insertionSort(d), 0);
+        assertArrayEquals(dSorted, SortComparison.selectionSort(d), 0);
+        assertArrayEquals(dSorted, SortComparison.quickSort(d), 0);
+        assertArrayEquals(dSorted, SortComparison.mergeSortIterative(d), 0);
+        assertArrayEquals(dSorted, SortComparison.mergeSortRecursive(d), 0);
     }
 
  

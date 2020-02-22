@@ -74,18 +74,24 @@
             return;
         }
 
-        int i = low, j = high;
         double base = a[low];
-        while (i < j) {
+        int i = low, j = high+1;
+        
+        while (i<j) {
+    	
+        	
+        	System.out.print("i:"+i); 
+        	
+            while (a[++i] < base && i!=high) {
 
-            while (a[j] >= base && i < j) {
-                j-=1;
+            }
+            while (a[--j] > base && j!=low) {
+
             }
 
-            while (a[i] <= base && i < j) {
-                i+=1;
-            }
-            swap(a,i,j); 
+            if(i<j)
+            	swap(a,i,j);             
+
         }
         swap(a,low,j); 
         
