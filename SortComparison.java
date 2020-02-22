@@ -26,10 +26,12 @@
 	 
     static double [] insertionSort (double a[]){
 
-        double temp;
         for(int i=1; i<a.length; i++) {
-        	for(int j=1; j>0; j--) {
-        		swap(a,j,j-1);
+        	for(int j=i; j>0; j--) {
+        		if(a[j]<a[j-1])
+        		{
+        		    swap(a,j,j-1);
+        		}
         	}
         }
         return a;
@@ -48,8 +50,9 @@
          for(int i=0; i<n-1; i++) {
         	 int min_idx=i;
         	 for(int j=i+1; j<n; j++) {
-        		 if(a[j]<a[min_idx])
-        			 min_idx=j;
+        		 if(a[j]<a[min_idx]) {
+        			 min_idx=j;        			 
+        		 }
         	 }
         	 swap(a,i,min_idx);
          }
@@ -76,11 +79,11 @@
         while (i < j) {
 
             while (a[j] >= base && i < j) {
-                j--;
+                j-=1;
             }
 
             while (a[i] <= base && i < j) {
-                i++;
+                i+=1;
             }
             swap(a,i,j); 
         }
@@ -173,10 +176,11 @@
 
    
 
-
+/*
     public static void main(String[] args) {
 
         //todo: do experiments as per assignment instructions
     }
+*/
 
  }//end class

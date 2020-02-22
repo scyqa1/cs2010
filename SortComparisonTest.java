@@ -4,6 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 //-------------------------------------------------------------------------
 /**
  *  Test class for SortComparison.java
@@ -51,9 +55,81 @@ public class SortComparisonTest
         assertArrayEquals(aSorted, SortComparison.mergeSortRecursive(a), 0);
     }
 
+ 
+    
+    
+    
+    public static double [] readFile(double a[], String fileName) {
+    	try {
+            File file = new File(fileName);
+            Scanner in = new Scanner(file);
+            int num = 0;  
+            while (in.hasNext()) {
+            	a[num] = in.nextDouble();
+            	num++;
+            }
+            in.close();           
+        }
+        catch (FileNotFoundException e) {
+            System.exit(1);
+        }
+    	return a;
+    }
+    
+    public static void print(String filename, int n) {
+    	
+    	double []a=new double[n];
+    	double []b=new double[n];
+    	
+		a=readFile(a, filename);
+    	
+    	//InsertionSort
+		long startTime = System.currentTimeMillis();
+		for(int i=0;i<3;i++) {
+			b=a;
+			SortComparison.insertionSort(b);
+		}
+		long finishTime = System.currentTimeMillis();
+		System.out.print( (double)(Math.round((finishTime - startTime)*10/3)/10.0) + "ms  -------|");
+		
+    	//SelectionSort
+		startTime = System.currentTimeMillis();
+		for(int i=0;i<3;i++) {
+			b=a;
+			SortComparison.selectionSort(b);
+		}
+		finishTime = System.currentTimeMillis();
+		System.out.print(" " + (double)(Math.round((finishTime - startTime)*10/3)/10.0) + "ms  -------|");
+	
+    	//QuickSort
+		startTime = System.currentTimeMillis();
+		for(int i=0;i<3;i++) {
+			b=a;
+			SortComparison.quickSort(b);
+		}
+		finishTime = System.currentTimeMillis();
+		System.out.print(" " + (double)(Math.round((finishTime - startTime)*10/3)/10.0) + "ms  -------|");
+	
+    	//MergeSortIterative
+		startTime = System.currentTimeMillis();
+		for(int i=0;i<3;i++) {
+			b=a;
+			SortComparison.mergeSortIterative(b);
+		}
+		finishTime = System.currentTimeMillis();
+		System.out.print(" " + (double)(Math.round((finishTime - startTime)*10/3)/10.0) + "ms  -------|");
+	
+    	//MergeSortRecursive
+		startTime = System.currentTimeMillis();
+		for(int i=0;i<3;i++) {
+			b=a;
+			SortComparison.mergeSortRecursive(b);
+		}
+		finishTime = System.currentTimeMillis();
+		System.out.print(" " + (double)(Math.round((finishTime - startTime)*10/3)/10.0) + "ms  -------|\n");
+	
+    }
 
-    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
-    // be executed at least once from at least one test.
 
     // ----------------------------------------------------------
     /**
@@ -63,7 +139,30 @@ public class SortComparisonTest
      */
     public static void main(String[] args)
     {
-        //TODO: implement this method
+    	System.out.println("\n--------------------|Insertion------|Selection------|Quick----------|MergeIterative-|MergeRecursive-|"); 
+    	
+    	System.out.print("10 random-----------| "); 
+    	print("numbers10.txt",10);
+    	
+    	System.out.print("100 random----------| "); 
+    	print("numbers100.txt",100);
+    	
+    	System.out.print("1000 random---- ----| "); 
+    	print("numbers1000.txt",1000);
+    	
+    	System.out.print("1000 few unique-----| "); 
+    	print("numbers1000Duplicates.txt",1000);
+    	
+    	System.out.print("1000 nearly ordered-| "); 
+    	print("numbersNearlyOrdered1000.txt",1000);
+    	
+    	System.out.print("1000 reverse order--| "); 
+    	print("numbersReverse1000.txt",1000);
+    	
+    	System.out.print("1000 sorted---------| "); 
+    	print("numbersSorted1000.txt",1000);
+    	
+    	
     }
 
 }
