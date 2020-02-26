@@ -4,7 +4,7 @@
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
- *  @author
+ *  @author Qichen An 19324317
  *  @version HT 2020
  */
 
@@ -78,9 +78,6 @@
         int i = low, j = high+1;
         
         while (i<j) {
-    	
-        	
-        	System.out.print("i:"+i); 
         	
             while (a[++i] < base && i!=high) {
 
